@@ -2,6 +2,7 @@ package ws20.corona;
 
 import static jsTools.Graph.*;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Human {
@@ -16,8 +17,17 @@ public class Human {
     int pX, pY;
     // size of humans
     int size;
+    // counter for healing : human will be healed after he moved <X> times
+    int countForHeal;
+    final int DAYS_TO_BE_HEALED = 1000;
 
-    // inner grid size for "walls"
+    // color for comparsion
+    Color white = new Color(255,255,255);
+    Color black = new Color(0,0,0);
+    Color red = new Color(255,0,0);
+    Color blue = new Color(0,0,255);
+
+    // inner grid size for "walls" so humans dont go out of the box
     final int INNER_GRID_SIZE_MAX = 640;
     final int INNER_GRID_SIZE_MIN = 10;
 
@@ -51,11 +61,29 @@ public class Human {
 
     // check if human is infected by comparing color
     boolean isInfected() {
-        return getColor(human).toString().equals("red");
+        return getColor(human).equals(red);
+    }
+
+    // set healed (set color = blue)
+    void setHealed() {
+        setColor(human, "blue");
+        paintNew();
+    }
+
+    // check if human is healed
+    boolean isHealed() {
+        return getColor(human).equals(blue);
     }
 
     // main move function
     void move() {
+        if(isInfected()){
+            countForHeal++;
+            System.out.println(countForHeal);
+        }
+        if (countForHeal >= DAYS_TO_BE_HEALED){
+            setHealed();
+        }
         // check if human is out of grid : X-POSITION
         if (pX < INNER_GRID_SIZE_MIN || pX > INNER_GRID_SIZE_MAX) {
             // changing direction

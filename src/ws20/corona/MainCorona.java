@@ -66,12 +66,12 @@ public class MainCorona {
             for (int i = 0; i < humans.length; i++) {
                 // letting humans move
                 humans[i].move();
-                // iterating ArrayList
+                // iterating ArrayList for comparsion
                 for (int j = 0; j < humansInfected.size(); j++) {
                     // exclude humans who are in array and ArrayList
                     if (!humans[i].equals(humansInfected.get(j))) {
                         // check if a human is nearby a infected human
-                        if (isNearby(humans[i], humansInfected.get(j))) {
+                        if (isNearby(humans[i], humansInfected.get(j)) && !humansInfected.get(j).isHealed()) {
                             // set infected
                             humans[i].setInfected();
                             // dont add human again in ArrayList only once
