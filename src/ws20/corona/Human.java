@@ -77,10 +77,12 @@ public class Human {
 
     // main move function
     void move() {
+        // check if human is infected so the counter for DAYS_TO_BE_HEALED can be used
         if(isInfected()){
             countForHeal++;
             System.out.println(countForHeal);
         }
+        // check if counter has reached the number so human can be healed
         if (countForHeal >= DAYS_TO_BE_HEALED){
             setHealed();
         }

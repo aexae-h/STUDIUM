@@ -70,7 +70,7 @@ public class MainCorona {
                 for (int j = 0; j < humansInfected.size(); j++) {
                     // exclude humans who are in array and ArrayList
                     if (!humans[i].equals(humansInfected.get(j))) {
-                        // check if a human is nearby a infected human
+                        // check if a human is nearby a infected human and check wether an infected is not healed
                         if (isNearby(humans[i], humansInfected.get(j)) && !humansInfected.get(j).isHealed()) {
                             // set infected
                             humans[i].setInfected();
