@@ -1,4 +1,4 @@
-package ws20.corona;
+package ws20._corona;
 
 import static jsTools.Graph.*;
 
