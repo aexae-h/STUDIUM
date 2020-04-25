@@ -35,7 +35,7 @@ class Main {
         sq1.fallDown();
 
 
-        //resetWall(); // TODO while or in if
+        //resetWall();
 
     }
 
@@ -51,7 +51,7 @@ class Main {
     static void resetWall(){
         for (int i = 0; i < 24; i++) {
             for (int j = 0; j < 24; j++){
-                setWandColor(i, j, "black"); // TODO to white
+                setWandColor(i, j, "black");
                 paintWandNew();
                 sleep(s);
             }
