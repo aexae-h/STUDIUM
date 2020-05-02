@@ -4,7 +4,7 @@ import static jsTools.Graph.*;
 
 class Sequenzfluss extends _Name {
 
-    _Position next;
+    private _Position next;
 
     Sequenzfluss(String txt) {
         super(txt);
@@ -15,8 +15,10 @@ class Sequenzfluss extends _Name {
     }
 
     void add2Window(int xA, int yA){
-
         addArrow(xA,yA,next.getXZugangspunkt(),next.getYZugangspunkt()+25,black);
+        if(txt != null){
+            addText(txt,(next.getXZugangspunkt()-xA)/2+xA,next.getYZugangspunkt(),10,black);
+        }
         next.add2Window();
     }
 
